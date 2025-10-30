@@ -1,13 +1,15 @@
 import streamlit as st
 from PIL import Image, ImageDraw, ImageFont
 import streamlit.components.v1 as components
+
 def add_watermark(image, watermark_text):
     img = Image.open(image)
     draw = ImageDraw.Draw(img)
     font = ImageFont.load_default()
     draw.text((10, 10), watermark_text, font=font)
     return img
-  def create_signature():
+
+def create_signature():
     html_code = """
     <canvas id="canvas" width="400" height="200"></canvas>
     <script>
@@ -35,7 +37,8 @@ def add_watermark(image, watermark_text):
     </script>
     """
     components.html(html_code, height=250)
-    st.title("Document Editor")
+
+st.title("Document Editor")
 tab1, tab2 = st.tabs(["Watermark", "E-Signature"])
 
 with tab1:
@@ -49,4 +52,3 @@ with tab1:
 with tab2:
     st.write("Draw your signature:")
     create_signature()
-    
