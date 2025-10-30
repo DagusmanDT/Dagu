@@ -18,7 +18,17 @@ st.dataframe(df)
 st.subheader("Try this slider:")
 slider_value = st.slider("Select a number", 0, 100, 50)
 st.write(f"You selected: {slider_value}")
+
 # Add a button
 if st.button("Click me!"):
     st.balloons()
     st.success("🎉 Congratulations! Your app is working!")
+    # Add this to your app.py
+st.sidebar.title("Navigation")
+page = st.sidebar.selectbox("Choose a page", ["Home", "Data", "Analysis"])
+if page == "Home":
+    st.write("Welcome to the home page")
+elif page == "Data":
+    st.write("Here's your data section")
+elif page == "Analysis":
+    st.write("Analysis tools go here")
