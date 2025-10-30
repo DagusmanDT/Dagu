@@ -18,7 +18,6 @@ st.dataframe(df)
 st.subheader("Try this slider:")
 slider_value = st.slider("Select a number", 0, 100, 50)
 st.write(f"You selected: {slider_value}")
-
 # Add a button
 if st.button("Click me!"):
     st.balloons()
