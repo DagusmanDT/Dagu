@@ -1,35 +1,18 @@
 import streamlit as st
-from PIL import Image, ImageDraw
-import streamlit.components.v1 as components
+from streamlit_draw import st_canvas
 
 def create_signature():
-    html_code = """
-    <canvas id="canvas" width="400" height="200"></canvas>
-    <script>
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
-    var drawing = false;
-    ctx.lineWidth = 5;
-    
-    canvas.addEventListener('mousedown', (e) => {
-    drawing = true;
-    ctx.beginPath();
-    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-    });
-    
-    canvas.addEventListener('mousemove', (e) => {
-    if (drawing) {
-    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-    ctx.stroke();
-    }
-    });
-    
-    canvas.addEventListener('mouseup', () => {
-    drawing = false;
-    });
-    </script>
-    """
-    components.html(html_code, height=250)
+    st.write("Draw your signature:")
+    canvas_result = st_canvas(
+        fill_color="rgba(255, 165, 0, 0.3)",
+        stroke_width=5,
+        stroke_color="#000000",
+        background_color="#ffffff",
+        height=200,
+        width=400,
+        drawing_mode="freedraw",
+        key="canvas",
+    )
+    return canvas_result
 
-st.title("Document Editor")
-create_signature()
+signature = create_signature()
